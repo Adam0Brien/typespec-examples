@@ -37,19 +37,19 @@ jobs:
       - name: View Protofiles
         run: ls tsp-output/@typespec/protobuf/resources/v1.proto
 
-       # Step 5: Copy compiled proto files to desired directory
+      # Step 6: Copy compiled proto files to desired directory
       - name: Sync Protobuf files
         run: |
-            mkdir -p src/main/proto
-            cp -r tsp-output/*.proto src/main/proto/
-     
-        # Step 6: Create a Pull Request
+          mkdir -p src/main/proto
+          cp -r tsp-output/@typespec/protobuf/resources/*.proto src/main/proto/
+
+      # Step 7: Create a Pull Request
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
-            token: ${{ secrets.GITHUB_TOKEN }}
-            commit-message: 'Sync updated proto files'
-            branch: update-protos
-            title: Update Protos
-            body: |
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'Sync updated proto files'
+          branch: update-protos
+          title: Update Protos
+          body: |
             This PR updates the Protobuf files generated from the latest TypeSpec definitions.
