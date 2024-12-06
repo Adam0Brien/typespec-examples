@@ -1,7 +1,7 @@
 
 # Default target: Compile all TypeSpec files
 compile:
-	./scripts/run_typespec.sh
+	./scripts/run.sh
 
 # Clean target: Remove generated files
 clean:
