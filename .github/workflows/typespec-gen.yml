@@ -41,6 +41,7 @@ jobs:
       - name: Sync Protobuf files
         run: |
           mkdir -p src/main/proto
+          rm -rf node_modules
           cp -r tsp-output/@typespec/protobuf/resources/*.proto src/main/proto/
 
       # Step 7: Create a Pull Request
