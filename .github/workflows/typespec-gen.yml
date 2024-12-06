@@ -1,0 +1,35 @@
+name: TypeSpec Compiler
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  compile-typespec:
+    name: Compile TypeSpec via Makefile
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install && npm install -g @typespec/compiler
+
+      # Step 4: Run Makefile
+      - name: Run Makefile
+        run: make all
+
