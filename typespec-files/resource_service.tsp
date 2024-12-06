@@ -21,8 +21,6 @@ model K8sCluster {
   @field(395858492)
   cluster_status: ClusterStatus;
 
-  @field(395858494)
-  kube_vendor: KubeVendor;
 
 }
 
