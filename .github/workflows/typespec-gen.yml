@@ -35,7 +35,7 @@ jobs:
 
       # Step 5: View Protofiles
       - name: View Protofiles
-        run: ls tsp-output/@typespec/protobuf/resources/v1.proto
+        run: ls tsp-output/@typespec/protobuf/resources
 
       # Step 6: Copy compiled proto files to desired directory
       - name: Sync Protobuf files
