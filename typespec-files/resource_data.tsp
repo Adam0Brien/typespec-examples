@@ -1,13 +1,19 @@
 import "@typespec/protobuf";
 using TypeSpec.Protobuf;
+
+
 @package({
   name: "resources.v1.resource_data",
-  go_package: "github.com/tonytheleg/resource-api/api/resources;resources",
-  java_package: "api.resources",
-  java_multiple_files: true,
+  options: {
+    go_package: "github.com/tonytheleg/resource-api/api/resources;resources",
+    java_package: "api.resources",
+    java_multiple_files: true,
+  }
 })
 namespace ResourcesV1;
-
+/**
+ * Represents Kubernetes cluster resource data.
+ */
 model K8sClusterResourceData {
   @field(219571597)
   external_cluster_id: string;
@@ -35,7 +41,9 @@ model K8sClusterResourceData {
     OPENSHIFT: 5;
     GKE: 6;
   }
-
+/**
+ * Represents RHEL host resource data.
+ */
 model RhelHostResourceData {
   @field(219571597)
   host_id: string;
