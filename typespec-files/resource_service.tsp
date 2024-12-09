@@ -46,11 +46,11 @@ model DeleteResourceRequest {
 
 model DeleteResourceResponse {}
 
+@TypeSpec.Protobuf.service
 interface KesselResourceService {
- 
-  CreateResource(request: CreateResourceRequest): CreateResourceResponse;
+  CreateResource(...CreateResourceRequest): CreateResourceResponse;
 
-  UpdateResource(request: UpdateResourceRequest): UpdateResourceResponse;
+  UpdateResource(...UpdateResourceRequest): UpdateResourceResponse;
 
-  DeleteResource(request: DeleteResourceRequest): DeleteResourceResponse;
+  DeleteResource(...DeleteResourceRequest): DeleteResourceResponse;
 }
