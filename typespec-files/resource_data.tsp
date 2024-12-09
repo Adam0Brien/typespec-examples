@@ -1,7 +1,7 @@
 import "@typespec/protobuf";
 using TypeSpec.Protobuf;
 @package({
-  name: "resources.v1",
+  name: "resources.v1.resource_data",
   go_package: "github.com/tonytheleg/resource-api/api/resources;resources",
   java_package: "api.resources",
   java_multiple_files: true,
