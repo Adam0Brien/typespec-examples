@@ -22,7 +22,7 @@ enum KubeVendor {
   GKE = 6;
 }
 
-message K8sCluster {
+message K8sClusterResourceData {
   string external_cluster_id = 219571597;
   string kube_version = 395858490;
   ClusterStatus cluster_status = 395858492;
@@ -34,45 +34,8 @@ enum HostStatus {
   DISABLED = 1;
 }
 
-// Represents RHEL host resource data.
-message RhelHost {
+message RhelHostResourceData {
   string host_id = 219571597;
   string os_version = 395858490;
   HostStatus host_status = 395858490;
-}
-
-// Create resource request.
-message CreateResourceRequest {
-  RhelHost rhel_host = 1;
-  K8sCluster k8s_cluster = 2;
-}
-
-// Create resource response.
-message CreateResourceResponse {}
-
-// Update resource request.
-message UpdateResourceRequest {
-  RhelHost rhel_host = 1;
-  K8sCluster k8s_cluster = 2;
-}
-
-// Update resource response.
-message UpdateResourceResponse {}
-
-// Delete resource request.
-message DeleteResourceRequest {
-  RhelHost rhel_host = 1;
-  K8sCluster k8s_cluster = 2;
-}
-
-// Delete resource response.
-message DeleteResourceResponse {}
-
-service KesselResourceService {
-  // Create a new resource.
-  rpc CreateResource(CreateResourceRequest) returns (CreateResourceResponse);
-  // Update an existing resource.
-  rpc UpdateResource(UpdateResourceRequest) returns (UpdateResourceResponse);
-  // Delete a resource.
-  rpc DeleteResource(DeleteResourceRequest) returns (DeleteResourceResponse);
 }
