@@ -42,7 +42,7 @@ jobs:
         run: |
           mkdir -p src/main/proto
           rm -rf node_modules
-          cp -r tsp-output/@typespec/protobuf/resources/*.proto src/main/proto/
+          cp -r tsp-output/@typespec/protobuf/resources/v1/*.proto src/main/proto/
 
       # Step 7: Create a Pull Request
       - name: Create Pull Request
