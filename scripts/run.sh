@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Set the directory containing the TypeSpec files
-TSP_DIR="./typespec-files" 
-OUTPUT_DIR="./tsp-output"
+TSP_DIR="./typespec-files"
+OUTPUT_DIR="./tsp-generated"  # Single output directory for all files
 
 # Ensure TypeSpec CLI is installed
 if ! command -v tsp &> /dev/null; then
@@ -16,12 +16,28 @@ mkdir -p "$OUTPUT_DIR"
 # Compile all .tsp files in the TSP_DIR
 for file in "$TSP_DIR"/*.tsp; do
     if [ -f "$file" ]; then
+        # Get the base name of the .tsp file without extension
+        file_name=$(basename "$file" .tsp)
+
         echo "Compiling $file..."
-        tsp compile $file --emit @typespec/protobuf
-        if [ $? -ne 0 ]; then
-            echo "Error: Failed to compile $file"
-            exit 1
-        fi
+        
+        # Temporary output directory for this file
+        temp_dir="$OUTPUT_DIR/temp/$file_name"
+        mkdir -p "$temp_dir"
+
+        # Compile the .tsp file
+        tsp compile "$file" --emit @typespec/protobuf --output-dir "$temp_dir"
+
+        # Move and rename generated .proto files to the final output directory
+        find "$temp_dir/@typespec/protobuf/resources" -type f -name "*.proto" | while read -r proto_file; do
+            new_name="$OUTPUT_DIR/$file_name.proto"
+            mv "$proto_file" "$new_name"
+        done
+
+        # Cleanup temporary directory
+        rm -rf "$temp_dir"
+
+        echo "Generated $file_name.proto"
     fi
 done
 

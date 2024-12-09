@@ -35,14 +35,14 @@ jobs:
 
       # Step 5: View Protofiles
       - name: View Protofiles
-        run: ls tsp-output/@typespec/protobuf/resources
+        run: ls tsp-generated
 
       # Step 6: Copy compiled proto files to desired directory
       - name: Sync Protobuf files
         run: |
           mkdir -p src/main/proto
           rm -rf node_modules
-          cp -r tsp-output/@typespec/protobuf/resources/*.proto src/main/proto/
+          cp -r tsp-generated/*.proto src/main/proto/
 
       # Step 7: Create a Pull Request
       - name: Create Pull Request
