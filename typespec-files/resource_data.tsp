@@ -3,7 +3,7 @@ using TypeSpec.Protobuf;
 
 
 @package({
-  name: "resources.v1.resource_data",
+  name: "resources.v1",
   options: {
     go_package: "github.com/tonytheleg/resource-api/api/resources;resources",
     java_package: "api.resources",
