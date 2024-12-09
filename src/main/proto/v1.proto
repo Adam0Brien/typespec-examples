@@ -2,7 +2,7 @@
 
 syntax = "proto3";
 
-package resources.v1.resource_types;
+package resources.v1;
 
 import "resources/v1/common.proto";
 import "resources/v1/resource_data.proto";
