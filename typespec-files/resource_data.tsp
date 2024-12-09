@@ -45,7 +45,7 @@ model RhelHostResourceData {
   host_id: string;
   @field(395858490)
   os_version: string;
-  @field(395858490)
+  @field(395858491)
   host_status: HostStatus;
 }
   enum HostStatus {
